@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<?php 
+
+echo "Ejercicio 1" . "<br>";
+echo "<br>";
+
+//variable
+$nombre="Franu";
+echo "Bienvenida a DAW2: " . $nombre; 
+echo "<br>" . "Eres la mejor" . "<br>";
+echo "<br>";
+
+
+echo "Ejercicio 2" . "<br>";
+echo "<br>";
+
+//variables
+
+$nombre="Francella";
+$edad="38";
+$ciudad="Santander";
+
+echo $nombre . " tiene " . $edad ." años " . " y vive en " . $ciudad;
+echo "<br>";
+
+
+echo "<br>";
+echo "Ejercicio 3" . "<br>";
+echo "<br>";
+
+//variables para calculos no usar comillas.
+
+$a = 2;
+$b = 6;
+
+echo "Para los valores A = 2 y B = 6, muestre: ";
+echo "<br>";
+echo "<br>";
+echo " TOTAL SUMA (A + B): ". $a + $b;
+echo "<br>";
+
+echo "<br>";
+echo " TOTAL RESTA (A - B): " . $a - $b;
+echo "<br>";
+
+echo "<br>";
+echo " TOTAL MULTIPLICACIÓN (A * B): " . $a * $b;
+echo "<br>";
+
+echo "<br>";
+echo " TOTAL DIVISIÓN (A / B): " . $a / $b;
+echo "<br>";
+
+
+
+
+echo "<br>";
+echo "Ejercicio 4" . "<br>";
+echo "<br>";
+
+echo "Tipos de Variables: ";
+echo "<br>";
+
+//VARIABLES
+$materia="Entorno Servidor";
+$nota=98;
+$horas=7.5;
+$esFacil= true;
+
+echo "<br>";
+echo "Variable nombre: " . gettype($materia) ;
+echo "<br>";
+
+echo "<br>";
+echo "Variable nota: " . gettype($nota);
+echo "<br>";
+echo "Variable horas: " . gettype($horas);
+echo "<br>";
+echo "Variable ¿es fácil?: " . gettype($esFacil);
+echo "<br>";
+
+
+
+
+echo "<br>";
+echo "Ejercicio 5" . "<br>";
+echo "<br>";
+
+
+$a = "8";
+$b = 8;
+var_dump($a == $b);
+echo "<br>";
+var_dump($a === $b);
+
+
+?> 
+
+</body>
+</html>
