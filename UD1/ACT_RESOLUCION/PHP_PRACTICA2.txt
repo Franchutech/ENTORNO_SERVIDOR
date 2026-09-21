@@ -1,3 +1,15 @@
+Ejercicio 1
+
+Crea un script PHP que declare dos variables numéricas y muestre el resultado de sumarlas, restarlas, multiplicarlas y dividirlas, usando echo para mostrar cada operación con su resultado.
+
+Ejercicio 2
+
+Declara una variable $edad y otra $tieneCarnet (booleana). Usa operadores de comparación y lógicos (&&, ||, !) para mostrar un mensaje distinto según si la persona puede conducir (mayor de 18 años y tiene carnet), es menor de edad, o es mayor de edad pero no tiene carnet.
+Ejercicio 3
+
+Crea un script que reciba tres variables ($nota1, $nota2, $nota3) y calcule la media usando operadores aritméticos. Después, usando operadores de comparación y lógicos, determina y muestra si el alumno ha aprobado (media >= 5), y si además ha aprobado con todas las notas individuales >= 4 (sin ningún suspenso grave), mostrando un mensaje distinto en cada caso.
+
+
 <!DOCTYPE html>
 <html>
 <body>
@@ -32,26 +44,44 @@ if ($edad >= 18 && $tieneCarnet) {
 ?>
 
 <?php
-$nota1 = 6.5;
-$nota2 = 4.0;
-$nota3 = 7.5;
+<?php
+$nota = 8.5;
 
-// Cálculo de la media
-$media = ($nota1 + $nota2 + $nota3) / 3;
+// Convertimos la nota a un número entero (8.5 pasa a ser 8)
+$notaEntera = (int)$nota;
 
-echo "Nota media: " . number_format($media, 2) . "<br>";
+switch ($notaEntera) {
+    case 0:
+    case 1:
+    case 2:
+    case 3:
+    case 4:
+        echo "Calificación: Insuficiente<br>";
+        break;
 
-// Evaluación de condiciones
-$haAprobadoMedia = $media >= 5;
-$sinSuspensosGraves = ($nota1 >= 4) && ($nota2 >= 4) && ($nota3 >= 4);
+    case 5:
+        echo "Calificación: Suficiente<br>";
+        break;
 
-if ($haAprobadoMedia && $sinSuspensosGraves) {
-    echo "Aprobado: cumples con la media requerida y no tienes notas inferiores a 4.";
-} elseif ($haAprobadoMedia && !$sinSuspensosGraves) {
-    echo "Suspenso por criterio específico: la media es suficiente, pero tienes al menos una nota inferior a 4.";
-} else {
-    echo "Suspenso: no alcanzas la nota media mínima de 5.";
+    case 6:
+        echo "Calificación: Bien<br>";
+        break;
+
+    case 7:
+    case 8:
+        echo "Calificación: Notable<br>";
+        break;
+
+    case 9:
+    case 10:
+        echo "Calificación: Sobresaliente<br>";
+        break;
+
+    default:
+        echo "Nota no válida.<br>";
+        break;
 }
+?>
 ?>
 
 

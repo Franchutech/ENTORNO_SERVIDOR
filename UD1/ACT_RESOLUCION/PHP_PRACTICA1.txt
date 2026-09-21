@@ -1,3 +1,32 @@
+Ejercicio 1
+
+Crea una variable $nombre con tu nombre y muestra un mensaje de bienvenida que incluya dicha variable; utiliza concatenación con el operador punto (.).
+
+Ejercicio 2
+
+Declara tres variables: $nombre (texto), $edad (entero) y $ciudad (texto). Muestra una única frase que combine las tres, por ejemplo: "Ana tiene 21 años y vive en Santander", no utilices concatenación con punto(.).
+
+ Ejercicio 3
+
+Declara dos variables numéricas, $a y $b, con los valores que quieras. Muestra el resultado de su suma, resta, multiplicación y división, cada una en una línea distinta.
+
+ Ejercicio 4
+
+Crea una variable de cada tipo básico (string, int, float, bool) y usa gettype() para mostrar el tipo de cada una.
+
+Ejercicio 5
+
+Sin ejecutarlo todavía, piensa o escribe en un papel qué crees que mostrará este código. Después compruébalo en W3Schools:
+
+<?php
+    $a = "8";
+    $b = 8;
+    var_dump($a == $b);
+    var_dump($a === $b);
+?>
+
+
+
 <!DOCTYPE html>
 <html>
 <body>

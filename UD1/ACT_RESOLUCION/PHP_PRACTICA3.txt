@@ -1,0 +1,154 @@
+Ejercicio 1
+
+Crea un script que declare una variable $numero y muestre si es par o impar usando if/else. Después, con otra variable $edad, muestra si la persona es mayor o menor de edad.
+
+Ejercicio 2
+
+Declara una variable $diaSemana (número del 1 al 7) y usa switch para mostrar el nombre del día correspondiente. Añade un default para el caso de un número fuera de rango. 
+
+Ejercicio 3
+
+Utiliza switch para asignar una calificación (Sobresaliente, Notable, Bien, Suficiente, Insuficiente) según un valor $nota.
+
+Ejercicio 4
+
+Crea un script que reciba tres variables ($usuario, $contraseña, $activo) simulando un login simple. Usa condiciones if/else anidadas para comprobar, en este orden: si el usuario existe (compáralo con un valor fijo), si la contraseña es correcta, y si la cuenta está activa — mostrando un mensaje distinto y específico para cada posible fallo (usuario incorrecto, contraseña incorrecta, cuenta inactiva, login correcto).
+
+
+<!DOCTYPE html>
+<html>
+<body>
+
+
+<?php
+echo "Ejercicio 1 par o impar" . "<br>";
+echo "<br>";
+
+$numero = 7;
+
+if ($numero % 2 == 0) {
+	echo "El número " . $numero . " es par.<br>";
+} else {
+	echo "El número " . $numero . " es impar.<br>";
+}
+
+echo "<br>";
+echo "<hr>";
+
+echo "Ejercicio 1.2 mayor o menor" . "<br>";
+echo "<br>";
+
+
+$edad= 17;
+
+if ($edad >= 18) {
+	echo "La persona con la edad: " . $edad . " es mayor de edad.<br>";
+} else {
+	echo "La persona con la edad: " . $edad . " es menor de edad.<br>";
+}
+
+echo "<br>";
+echo "<hr>";
+
+echo "Ejercicio 2 switch días de la semana" . "<br>";
+echo "<br>";
+
+
+$diaSemana = 3;
+
+switch ($diaSemana) {
+    case 1:
+        echo "Lunes<br>";
+        break;
+    case 2:
+        echo "Martes<br>";
+        break;
+    case 3:
+        echo "Miércoles<br>";
+        break;
+    case 4:
+        echo "Jueves<br>";
+        break;
+    case 5:
+        echo "Viernes<br>";
+        break;
+    case 6:
+        echo "Sábado<br>";
+        break;
+    case 7:
+        echo "Domingo<br>";
+        break;
+    default:
+        echo "Día inválido: número fuera de rango.<br>";
+        break;
+}
+
+echo "<hr>";
+
+echo "Ejercicio 3 switch de notas" . "<br>";
+echo "<br>";
+
+$nota = 3;
+
+echo "Para la nota " . $nota . " el resultado es: " . "<br>";
+echo "<br>";
+switch ($nota) {
+    case 1:
+    case 2:
+    case 3:
+    case 4:
+        echo "Calificación Insuficiente<br>";
+        break;
+    case 5:
+        echo "Calificación Suficiente<br>";
+        break;
+    case 6:
+    case 7:
+        echo "Calificación Bien<br>";
+        break;
+    case 8:
+        echo "Notable<br>";
+        break;
+    case 9:
+    case 10:
+        echo "Calificación Sobresaliente<br>";
+        break;
+    default:
+        echo "Nota inválida.<br>";
+        break;
+}
+
+echo "<hr>";
+
+
+echo "Ejercicio 4 lógica usuario, contraseña, activo" . "<br>";
+echo "<br>";
+
+
+$user = "admin";
+$pass = "secreta";
+$isactive = true;
+
+$userCorrect = "admin";
+$passCorrect = "secreta";
+
+if ($user === $userCorrect) {
+    if ($pass === $passCorrect) {
+        if ($isactive) {
+            echo "Login correcto: acceso concedido.";
+        } else {
+            echo "Fallo de autenticación: la cuenta está inactiva.";
+        } 
+    } else {
+        echo "Fallo de autenticación: contraseña incorrecta.";
+    } 
+} else {
+    echo "Fallo de autenticación: usuario incorrecto.";
+} 
+
+echo "<hr>";
+
+?>
+
+</body>
+</html>

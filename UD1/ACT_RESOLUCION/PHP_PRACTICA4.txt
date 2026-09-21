@@ -1,0 +1,127 @@
+Ejercicio 1
+
+Crea un script que, usando un bucle for, muestre la tabla de multiplicar de un número $numero (del 1 al 10), mostrando cada línea como $numero x 1 = resultado, etc.
+
+Ejercicio 2
+
+Usando un bucle while, calcula y muestra la suma de todos los números pares entre 1 y 50. 
+
+Ejercicio 3
+
+Usa do-while para simular un contador regresivo desde 10 hasta 0, mostrando cada número.
+
+Ejercicio 4
+
+Declara un array con una lista de precios de productos ($precios = [12.5, 8, 25.3, 4.99, 15]). Usa foreach para calcular y mostrar el precio total con un 21% de IVA aplicado a cada producto. Después, con dos bucles for anidados, genera y muestra una tabla completa de multiplicar del 1 al 5 (formato tabla, filas y columnas).
+
+
+<!DOCTYPE html>
+<html>
+<body>
+
+
+<?php
+
+echo "<h3>Ejercicio 1: Tabla de multiplicar</h3>";
+echo "<br>";
+//Crea un script que, usando un bucle for, muestre la tabla de multiplicar de un número $numero (del 1 al 10), mostrando cada línea como $numero x 1 = resultado, etc.
+
+$numero = 7;
+
+for ($i=1 ; $i<=10; $i++) {
+     $resultado = $numero * $i;
+    echo $numero . " x " . $i . " = " . $resultado . "<br>";
+}
+
+echo "<hr>";
+
+echo "<h3>Ejercicio 2: Bucle while</h3>";
+echo "<br>";
+//Usando un bucle while, calcula y muestra la suma de todos los números pares entre 1 y 50. 
+
+$contador = 1;
+$sumaTotal = 0;
+
+while ($contador <= 50) {
+    if ($contador % 2 === 0) {
+        $sumaTotal += $contador;
+    }
+    $contador++;
+}
+
+echo "La suma de todos los números pares entre 1 y 50 es: " . $sumaTotal . "<br>";
+
+
+echo "<hr>";
+
+
+echo "<h3>Ejercicio 3: Bucle do-while</h3>";
+echo "<br>";
+
+//Usa do-while para simular un contador regresivo desde 10 hasta 0, mostrando cada número.
+
+$regresivo = 10;
+
+do {
+    echo $regresivo . "<br>";
+    $regresivo--;
+} while ($regresivo >= 0);
+
+echo "<hr>";
+
+
+echo "<h3>Ejercicio 4 - Parte A: Precios con IVA y Tabla de multiplicar del 1 al 5</h3>";
+echo "<br>";
+//Declara un array con una lista de precios de productos ($precios = [12.5, 8, 25.3, 4.99, 15]). Usa foreach para calcular y mostrar el precio total con un 21% de IVA aplicado a cada producto. Después, con dos bucles for anidados, genera y muestra una tabla completa de multiplicar del 1 al 5 (formato tabla, filas y columnas).
+
+
+$precios = [12.5, 8, 25.3, 4.99, 15];
+
+foreach ($precios as $precio) {
+	$precioconIVA = $precio * 1.21;
+    $totalconIVA += $precioconIVA;
+    echo "Precio original: " . $precio . "€ | Con 21% IVA: " . $precioconIVA . "€<br>";
+}
+
+
+echo "<h4> Parte B: Tabla de multiplicar del 1 al 5</h4>";
+echo "<table border='1' cellpadding='6' cellspacing='0'>";
+
+
+echo "<tr><th>x</th>";
+for ($colHeader = 1; $colHeader <= 5; $colHeader++) {
+    echo "<th>" . $colHeader . "</th>";
+}
+echo "</tr>";
+
+//y hago aparte filas y columnas
+
+for ($fila = 1; $fila <= 5; $fila++) {
+    echo "<tr>";
+    echo "<th>" . $fila . "</th>"; //
+    for ($col = 1; $col <= 5; $col++) {
+        $producto = $fila * $col;
+        echo "<td align='center'>" . $producto . "</td>";
+    }
+    echo "</tr>";
+}
+
+echo "</table>";
+
+
+
+?>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
