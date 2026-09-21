@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<?php
+$num1 = 12;
+$num2 = 4;
+
+$suma = $num1 + $num2;
+$resta = $num1 - $num2;
+$multiplicacion = $num1 * $num2;
+$division = $num1 / $num2;
+
+echo "Suma: " . $num1 . " + " . $num2 . " = " . $suma . "<br>";
+echo "Resta: " . $num1 . " - " . $num2 . " = " . $resta . "<br>";
+echo "Multiplicación: " . $num1 . " * " . $num2 . " = " . $multiplicacion . "<br>";
+echo "División: " . $num1 . " / " . $num2 . " = " . $division . "<br>";
+?>
+
+
+<?php
+$edad = 20;
+$tieneCarnet = false;
+
+if ($edad >= 18 && $tieneCarnet) {
+    echo "Puedes conducir el vehículo.";
+} elseif ($edad >= 18 && !$tieneCarnet) {
+    echo "Eres mayor de edad, pero no tienes carnet para conducir.";
+} else {
+    echo "Eres menor de edad, no puedes conducir.";
+}
+?>
+
+<?php
+$nota1 = 6.5;
+$nota2 = 4.0;
+$nota3 = 7.5;
+
+// Cálculo de la media
+$media = ($nota1 + $nota2 + $nota3) / 3;
+
+echo "Nota media: " . number_format($media, 2) . "<br>";
+
+// Evaluación de condiciones
+$haAprobadoMedia = $media >= 5;
+$sinSuspensosGraves = ($nota1 >= 4) && ($nota2 >= 4) && ($nota3 >= 4);
+
+if ($haAprobadoMedia && $sinSuspensosGraves) {
+    echo "Aprobado: cumples con la media requerida y no tienes notas inferiores a 4.";
+} elseif ($haAprobadoMedia && !$sinSuspensosGraves) {
+    echo "Suspenso por criterio específico: la media es suficiente, pero tienes al menos una nota inferior a 4.";
+} else {
+    echo "Suspenso: no alcanzas la nota media mínima de 5.";
+}
+?>
+
+
+</body>
+</html>
