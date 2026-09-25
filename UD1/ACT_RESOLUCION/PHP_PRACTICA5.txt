@@ -1,52 +1,76 @@
-Ejercicio 1
-Crea un array indexado $listaCompra con al menos 5 productos (strings). Recórrelo con foreach y muestra cada producto numerado (1. Leche, 2. Pan, etc.). Añade un elemento nuevo al final con array_push o [] y vuelve a mostrar la lista completa.
-Ejercicio 2
-Crea un array asociativo $producto con claves nombre, precio y stock. Muestra una "ficha" del producto formateada usando echo y accediendo a cada clave. 
-Ejercicio 3
-Crea un segundo array asociativo con otro producto y calcula el precio total si compras la cantidad indicada en stock de ambos.
-Ejercicio 4
-Crea un array multidimensional $productos donde cada elemento sea un array asociativo con nombre, precio y categoria (al menos 4 productos, 2 categorías distintas). Recorre el array con foreach y muestra solo los productos de una categoría concreta, junto con el precio total de esos productos filtrados.
-
-
-
-
-
-
-
-
+<!DOCTYPE html>
+<html>
+<body>
 
 <?php
-// Primer producto (reutilizado del ejercicio anterior)
+
+
+//Crea un array indexado $listaCompra con al menos 5 productos (strings). Recórrelo con foreach y muestra cada producto numerado (1. Leche, 2. Pan, etc.). Añade un elemento nuevo al final con array_push o [] y vuelve a mostrar la lista completa.
+
+
+echo "<h3>Ejercicio 1: Array indexado</h3>";
+echo "<br>";
+
+//array indexado
+
+$listaCompras = array("Fresas", "Pan", "Galletas", "Coca-Cola", "Franui");
+foreach ($listaCompras as $listaCompra) {
+	echo $listaCompra . "<br>";
+}
+
+
+echo "<br>";
+
+array_push($listaCompras, "Café");
+
+foreach ($listaCompras as $listaCompra) {
+	echo $listaCompra . "<br>";
+    }
+
+echo "<hr>";
+
+
+//Crea un array asociativo $producto con claves nombre, precio y stock. Muestra una "ficha" del producto formateada usando echo y accediendo a cada clave. 
+
+echo "<h3>Ejercicio 2: Array asociativo</h3>";
+
+
 $producto1 = [
     "nombre" => "Teclado Mecánico",
     "precio" => 49.99,
     "stock"  => 5
 ];
 
-// Segundo producto
 $producto2 = [
     "nombre" => "Ratón Inalámbrico",
     "precio" => 25.50,
     "stock"  => 3
 ];
 
+echo "<hr>";
+
+echo "<h3>Ejercicio 3: Cálculo de Compra</h3>";
+
 // Cálculo del coste total si se agota todo el stock
 $subtotalProd1 = $producto1["precio"] * $producto1["stock"];
 $subtotalProd2 = $producto2["precio"] * $producto2["stock"];
 $totalGeneral  = $subtotalProd1 + $subtotalProd2;
 
-echo "<h3>Cálculo de compra de stock total:</h3>";
+echo "<h4>Cálculo de compra de stock total:</h4>";
 echo $producto1["nombre"] . ": " . $producto1["stock"] . " x " . $producto1["precio"] . " € = " . number_format($subtotalProd1, 2) . " €<br>";
 echo $producto2["nombre"] . ": " . $producto2["stock"] . " x " . $producto2["precio"] . " € = " . number_format($subtotalProd2, 2) . " €<br>";
 echo "<strong>Precio total combinado: " . number_format($totalGeneral, 2) . " €</strong><br>";
-?>
 
+echo "<hr>";
 
+//Crea un array multidimensional $productos donde cada elemento sea un array asociativo con nombre, precio y categoria (al menos 4 productos, 2 categorías distintas). Recorre el array con foreach y muestra solo los productos de una categoría concreta, junto con el precio total de esos productos filtrados.
 
-<?php
-// Array multidimensional: array que contiene arrays asociativos
+echo "<h3>Ejercicio 4: Array Multidimensional</h3>";
+echo "<br>";
+
 $productos = [
-    [
+	   
+	 [
         "nombre"    => "Monitor 24 pulgadas",
         "precio"    => 129.90,
         "categoria" => "Electrónica"
@@ -66,7 +90,21 @@ $productos = [
         "precio"    => 39.90,
         "categoria" => "Ropa"
     ]
+    
 ];
+
+froeach ($productos as $codigo) {
+
+
+
+?>
+
+</body>
+</html>
+
+
+
+
 
 // Categoría que vamos a filtrar
 $categoriaFiltrar = "Electrónica";
