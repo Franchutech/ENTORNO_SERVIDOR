@@ -93,14 +93,35 @@ $productos = [
     
 ];
 
-froeach ($productos as $codigo) {
+$preciototal = 0;
 
-
+foreach ($productos as $producto) {
+	if ($producto.$categoria == "Ropa"){
+		$preciototal += $producto.$precio;
+		echo $producto.$nombre;
+	}
+}
+echo $preciototal
 
 ?>
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
