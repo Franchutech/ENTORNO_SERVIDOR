@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<?php
+
+
+//Crea una función saludar($nombre) que muestre "Hola, [nombre]!". 
+
+
+echo "<h3>Ejercicio 2: Función Saludar</h3>";
+echo "<br>";
+
+
+function saludar($nombre){
+	echo "Hola, $nombre!";
+}
+echo saludar ("Franu");
+
+echo "<br>";
+
+
+echo "<hr>";
+
+//Crea una función sumar($a, $b) que devuelva la suma de dos números, y muestra el resultado con echo al llamarla.
+
+echo "<h3>Ejercicio 2: Función Sumar</h3>";
+echo "<br>";
+
+function sumar($x, $y) {
+	$z = $x + $y;
+    return $z;
+}
+echo "5 + 10 = " . sumar(5, 10) . " <br>";
+
+echo "<hr>";
+
+//Crea una función calcularPrecioFinal($precio, $iva = 21) que calcule y devuelva el precio con el IVA aplicado, usando un valor por defecto para $iva si no se indica. Pruébala llamándola con y sin el segundo parámetro.
+
+echo "<h3>Ejercicio 3: Función calcularPrecioFinal</h3>";
+echo "<br>";
+
+function calcularPrecioFinal($precio, $iva=21) {
+        return $precio + ($precio * $iva/100);
+
+}
+echo "1000 más IVA: " . calcularPrecioFinal(1000) . "<br>";
+
+echo "<hr>";
+
+//Crea la función esMayorDeEdad($edad) que devuelva true o false, y úsala dentro de una condición if.
+
+echo "<h3>Ejercicio 4: Función esMayorDeEdad</h3>";
+echo "<br>";
+
+function esMayorDeEdad($edad){
+	if($edad >=18){
+    return true;
+    
+    } else{
+    	return false;
+    	}
+}
+
+if (esMayorDeEdad(15)){
+	echo "La persona es Mayor de Edad" . "<br>";
+	}else{
+	 echo "La persona es Menor de edad". "<br>";
+
+}	
+    
+echo "<br>";
+
+echo "<hr>";
+
+//Crea una función recursiva factorial($n) que calcule el factorial de un número. 
+
+echo "<h3>Ejercicio 5: Función Factorial</h3>";
+echo "<br>";
+
+function factorial($n){
+	if($n <=1){
+    	return 1;
+    	}else {
+    return $n * factorial($n-1);
+    }
+}
+echo factorial(5). "<br>";
+
+echo "<hr>";
+
+//Crea una variable global $contador = 0 y una función incrementar() que la modifique usando global, mostrando cómo cambia su valor tras varias llamadas — y explica (en un comentario) por qué sin global no funcionaría.
+
+echo "<h3>Ejercicio 6: Función Incremental</h3>";
+echo "<br>";
+
+$contador = 0;
+
+function incrementar(){
+	
+}
+
+echo "<hr>";
+?>
+
+</body>
+</html>

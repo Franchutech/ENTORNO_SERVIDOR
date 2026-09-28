@@ -96,12 +96,14 @@ $productos = [
 $preciototal = 0;
 
 foreach ($productos as $producto) {
-	if ($producto.$categoria == "Ropa"){
-		$preciototal += $producto.$precio;
-		echo $producto.$nombre;
+	if ($producto["categoria"] == "Ropa"){
+		$preciototal += $producto["precio"];
+		echo $producto["nombre"]. "<br>";
+        
 	}
 }
-echo $preciototal
+
+echo $preciototal;
 
 ?>
 
