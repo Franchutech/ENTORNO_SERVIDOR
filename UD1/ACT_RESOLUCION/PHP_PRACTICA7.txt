@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<?php
+
+
+//Crea un formulario HTML con un campo de texto (nombre) y un botón de envío, con método POST, que envíe los datos a un script PHP. En el script PHP, recoge el valor con $_POST['nombre'] y muéstralo con un mensaje de bienvenida.
+
+
+<!DOCTYPE html>
+<html>
+<body>
+  <h1>Ejercicio 1: Primer Formulario</h1>
+	<form method="post" action="">
+  Nombre: <input type="text" name="nombre">
+  <input type="submit" value="Enviar">
+  </form>
+  
+  <?php
+  if (isset($_POST["nombre"])) {
+  echo "Hola " . $_POST["nombre"];
+  }
+    	
+?>
+ 
+</body>
+</html>	
+
+
+echo "<hr>";
+
+//Crea un formulario HTML con varios campos (nombre, edad, ciudad) que envíe los datos por método GET. En el script PHP, recoge cada valor con $_GET[...] y muestra una tabla o lista con toda la información recibida. 
+
+<!DOCTYPE html>
+<html>
+<body>
+  <h1>Ejercicio 2: Segundo Formulario</h1>
+	<form method="get" action="">
+  Nombre: <input type="text" name="nombre">
+  Edad: <input type="number" name="edad">
+  Ciudad: <input type="text" name="ciudad">
+  <input type="submit" value="Enviar">
+  </form>
+  <ul>
+  <?php
+  if (isset($_GET["nombre"], $_GET["edad"], $_GET[ciudad])) {
+  echo "<li>" . $_GET[nombre]" . </li>";
+  echo "<li> . $_GET[edad] . </li>";
+  echo "<li> . $_GET[ciudad] . </li>";
+  }
+	?>
+  </ul>
+ 
+</body>
+</html>
+
+
+echo "<hr>";
+
+//Crea un formulario con varios campos (nombre, email, mensaje). En el script PHP que recibe los datos, comprueba con isset() y empty() si el formulario ha sido enviado y si algún campo está vacío; si es así, muestra un mensaje de error indicando qué campo falta. Si todos los campos están completos, muestra un mensaje de confirmación con los datos recibidos.
+
+echo "<h3>Ejercicio 3: Tercer Formulario</h3>";
+echo "<br>";
+
+
+
+echo "<hr>";
+
+?>
+
+</body>
+</html>

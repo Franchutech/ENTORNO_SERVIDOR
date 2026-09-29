@@ -97,8 +97,16 @@ echo "<br>";
 $contador = 0;
 
 function incrementar(){
-	
+	global $contador;
+    $contador = $contador +1;
 }
+
+incrementar();
+incrementar();
+
+echo $contador;
+
+//Una variable creada dentro de una función solo existe dentro de la función, no es visible desde afuera, aunque hubiera otra con el mismo nombre fuera, si la necesito de fuera si o si tengo que usar global
 
 echo "<hr>";
 ?>
