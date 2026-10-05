@@ -47,4 +47,8 @@ public class Producto {
     public void setStock(int stock) {
         this.stock = stock;
     }
+
+    public double getPrecioconIva(){
+        return precio *1.21;
+    }
 }//CIERRE CLASE PRODUCTO
