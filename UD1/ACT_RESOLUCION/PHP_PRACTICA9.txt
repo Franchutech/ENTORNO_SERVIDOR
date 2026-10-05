@@ -1,0 +1,15 @@
+Ejercicio 1
+
+Crea un script con una variable $texto (una frase cualquiera). Muestra su longitud con strlen(), la misma frase en mayúsculas con strtoupper(), y en minúsculas con strtolower().
+
+
+
+Ejercicio 2
+
+Crea un script con una variable $frase. Usa str_replace() para sustituir una palabra por otra dentro de la frase. Después, usa substr() para extraer y mostrar solo los primeros 10 caracteres de la frase, y trim() para limpiar espacios de una segunda variable con espacios al inicio/final.
+
+
+
+Ejercicio 3
+
+Crea un script que reciba una frase ($frase = "Hoy es un buen dia para programar en PHP"). Usa explode() para dividirla en un array de palabras, cuenta cuántas palabras tiene con count(), y usa implode() para reconstruir la frase uniendo las palabras con guiones. Después, busca si una palabra concreta existe en la frase usando strpos() (y comprueba correctamente el resultado con !== false).

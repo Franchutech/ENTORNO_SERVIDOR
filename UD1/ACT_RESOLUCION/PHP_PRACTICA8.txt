@@ -1,0 +1,22 @@
+Ejercicio 1
+
+Crea un script PHP que reciba un array simulado de datos de formulario ($datos = ['nombre' => '', 'email' => 'ana@mail.com']). Recorre el array y muestra qué campos están vacíos usando empty(), junto con un mensaje indicando cuáles hay que rellenar.
+
+
+
+Ejercicio 2
+
+Crea un script que reciba una variable $email y compruebe si tiene un formato válido usando filter_var($email, FILTER_VALIDATE_EMAIL), mostrando un mensaje de éxito o error. 
+
+
+
+Ejercicio 3
+
+Añade una variable $edad recibida como texto, comprobando con is_numeric() si es un número válido antes de usarla en un cálculo.
+
+
+
+Ejercicio  4
+
+Crea un script que reciba datos de un formulario (nombre, comentario) simulando entrada de usuario con posible código HTML/JS ($_POST['comentario'] = '<script>alert(1)</script> Buen producto'). Usa filter_var con FILTER_SANITIZE_FULL_SPECIAL_CHARS (o htmlspecialchars) para limpiar el campo comentario antes de mostrarlo, y explica en un comentario por qué es importante este paso antes de guardar o mostrar datos de usuario.
+
