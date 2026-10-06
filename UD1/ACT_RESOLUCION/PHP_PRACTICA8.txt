@@ -2,21 +2,118 @@ Ejercicio 1
 
 Crea un script PHP que reciba un array simulado de datos de formulario ($datos = ['nombre' => '', 'email' => 'ana@mail.com']). Recorre el array y muestra qué campos están vacíos usando empty(), junto con un mensaje indicando cuáles hay que rellenar.
 
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Práctica8_Ejercicio1</title>
+</head>
+<body>
+    <h1>Práctica8_Ejercicio1</h1>
+    <?php
+    $datos = ['nombre' => '', 'email' => 'ana@mail.com'];
+    foreach ($datos as $clave => $value) {
+        if (empty($value)) {
+            echo ('<p>El campo ' . $clave . ' está vacío</p>');
+        } else {
+            echo ('<p>El campo ' . $clave . ' tiene el valor: ' . $value . '</p>');
+        }
+    }
+    ?>
+</body>
+</html>
 
 Ejercicio 2
 
 Crea un script que reciba una variable $email y compruebe si tiene un formato válido usando filter_var($email, FILTER_VALIDATE_EMAIL), mostrando un mensaje de éxito o error. 
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Práctica8_Ejercicio2</title>
+</head>
+<body>
+    <h1>Práctica8_Ejercicio2</h1>
+    <?php
+    $email = 'francella@mail.com';
+
+    if (filter_var($email, FILTER_VALIDATE_EMAIL)){
+            echo '<p>El email es válido.</p>';
+        } else {
+            echo '<p>El email no es válido.</p>';
+        }
+    ?>
+</body>
+</html>
 
 
 Ejercicio 3
 
 Añade una variable $edad recibida como texto, comprobando con is_numeric() si es un número válido antes de usarla en un cálculo.
 
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Práctica8_Ejercicio3</title>
+</head>
+<body>
+    <h1>Práctica8_Ejercicio3</h1>
+    <form method="get" action="">
+    Edad = <input type="text" name="edad">
+    </form>
+    <?php
+    if (isset($_GET["edad"])) {
+        $edad = $_GET["edad"];
+        if (is_numeric($edad)) {
+            echo '<p>La edad es válida.</p>';
+            $edadvalidada = intval($edad);
+            if ($edadvalidada > 0 && $edadvalidada < 18) {
+                echo '<p>La edad es menor de edad.</p>';
+            } elseif ($edadvalidada >= 18 && $edadvalidada < 65) {
+                echo '<p>La edad es adulta.</p>';
+            } else {
+                echo '<p>Edad lista para jubilarse jaja.</p>';
+            }
+        } else {
+            echo '<p>La edad no es válida.</p>';
+        }
+    }
+    ?>
+</body>
+</html>
 
 Ejercicio  4
 
 Crea un script que reciba datos de un formulario (nombre, comentario) simulando entrada de usuario con posible código HTML/JS ($_POST['comentario'] = '<script>alert(1)</script> Buen producto'). Usa filter_var con FILTER_SANITIZE_FULL_SPECIAL_CHARS (o htmlspecialchars) para limpiar el campo comentario antes de mostrarlo, y explica en un comentario por qué es importante este paso antes de guardar o mostrar datos de usuario.
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Práctica8_Ejercicio4</title>
+</head>
+<body>
+    <h1>Práctica8_Ejercicio4</h1>
+    <form method="get" action="">
+        Nombre = <input type="text" name="nombre">
+        Comentario = <input type="text" name="comentario">
+        <input type="submit" value="Enviar">
+    </form>
+    <?php
+    $comentario = "<script>alert(1)('Buen Producto')</script>";
+    $comentario_limpio = filter_var($comentario, FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    // Es importante sanear los datos con filter_var y FILTER_SANITIZE_FULL_SPECIAL_CHARS 
+    // antes de mostrarlos para evitar ataques de tipo XSS (Cross-Site Scripting), 
+    // impidiendo que el navegador interprete etiquetas HTML o JavaScript maliciosas introducidas por el usuario.
+    echo $comentario_limpio;
+    ?>
+    
+</body>
+</html>
 

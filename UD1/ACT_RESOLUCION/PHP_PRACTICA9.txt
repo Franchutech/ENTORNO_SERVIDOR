@@ -8,8 +8,63 @@ Ejercicio 2
 
 Crea un script con una variable $frase. Usa str_replace() para sustituir una palabra por otra dentro de la frase. Después, usa substr() para extraer y mostrar solo los primeros 10 caracteres de la frase, y trim() para limpiar espacios de una segunda variable con espacios al inicio/final.
 
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Práctica9_Ejercicio2</title>
+</head>
+<body>
+    <h1>Práctica9_Ejercicio2</h1>
+    <?php
+    $frase = "Era una vez un programador que quería aprender PHP";
+    $fraseModificada = str_replace("programador", "desarrollador", $frase);
+    echo " $fraseModificada";
+    $fraseDiezCaracteres = substr($frase,0,10);
+    echo "<p>Los diez primeros caracteres son: $fraseDiezCaracteres</p>";
+    $fraseConEspacios = " Era una vez un programador que quería aprender PHP ";
+    $fraseConEspacios = trim($fraseConEspacios);
+    echo "<p>La frase con espacios eliminados es: $fraseConEspacios</p>";
+    ?>
+</body>
+</html>
 
 Ejercicio 3
 
 Crea un script que reciba una frase ($frase = "Hoy es un buen dia para programar en PHP"). Usa explode() para dividirla en un array de palabras, cuenta cuántas palabras tiene con count(), y usa implode() para reconstruir la frase uniendo las palabras con guiones. Después, busca si una palabra concreta existe en la frase usando strpos() (y comprueba correctamente el resultado con !== false).
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Práctica9_Ejercicio 3</title>
+</head>
+<body>
+    <h1>Práctica9_Ejercicio3</h1>
+    <?php
+    $frase = "Hoy es un buen día para programar en PHP";
+    $frase_dividida = explode(" ", $frase);
+    //esto se usa para ver que el array funcionó con el explode
+    echo "<p>Array de palabras separadas:</p>";
+    echo "<pre>";
+    print_r($frase_dividida);
+    echo "</pre>";
+    $palabras_totales = count($frase_dividida);
+    echo "<p>Las palabras totales son: $palabras_totales</p>";
+    echo "<p>La frase es: $frase</p>";
+    $frase_unida = implode("-", $frase_dividida);
+    echo "<p>La frase unida es: $frase_unida</p>";
+    $existe_palabra = strpos($frase, "programar");
+    if ($existe_palabra !== false) {
+        echo "<p>La palabra 'programar' existe en la frase.</p>";
+    } else {
+        echo "<p>La palabra 'programar' no existe en la frase.</p>";
+    }
+
+    ?>
+    
+</body>
+</html>
