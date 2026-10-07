@@ -1,8 +1,12 @@
 package es.decroly.tienda_decroly.controllers;
 
 import es.decroly.tienda_decroly.domain.Producto;
+import org.apache.coyote.Response;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.URI;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicLong;
@@ -27,8 +31,8 @@ public class ProductosRestController {
     }
 
     @GetMapping
-    public List<Producto> getProductos() {
-        return productos;
+    public ResponseEntity<List<Producto>> getProductos() {
+        return ResponseEntity.ok(productos);
     }
 
     @GetMapping("/{id}")
@@ -42,27 +46,42 @@ public class ProductosRestController {
     }
 
     @PostMapping
-    public Producto crear(@RequestBody Producto producto) {
-        producto.setId(this.secuencia.incrementAndGet());
+    public ResponseEntity<Producto> crear(@RequestBody Producto producto) {
+        Long id = secuencia.incrementAndGet();
+        Producto nuevoProducto = new Producto(id, producto.getNombre(), producto.getPrecio(), producto.getStock());
         productos.add(producto);
-        return producto;
+        URI direccion = URI.create("/api/productos/" + id);
+
+        return ResponseEntity.created(direccion).body(nuevoProducto);
     }
 
     @PutMapping("/{id}")
-    public Producto actualizar(@PathVariable long id, @RequestBody Producto producto) {
+    public ResponseEntity<Producto> actualizar(@PathVariable long id, @RequestBody Producto producto) {
         for (Producto p : productos) {
             if (p.getId() != null && p.getId().equals(id)) {
                 p.setNombre(producto.getNombre());
                 p.setPrecio(producto.getPrecio());
                 p.setStock(producto.getStock());
-                return p;
+
+                // Encontrado y actualizado -> 200 OK con el objeto modificado
+                return ResponseEntity.ok(p);
             }
         }
-        return null;
+
+        // Terminó el bucle y no lo encontró -> 404 Not Found
+        return ResponseEntity.notFound().build();
     }
 
     @DeleteMapping("/{id}")
-    public boolean eliminar(@PathVariable long id) {
-        return productos.removeIf(p -> p.getId() != null && p.getId().equals(id));
+    public ResponseEntity<Void> eliminar(@PathVariable Long id) {
+        boolean eliminado = productos.removeIf(p -> p.getId() != null && p.getId().equals(id));
+
+        if (eliminado) {
+            // Se borró correctamente -> 204 No Content
+            return ResponseEntity.noContent().build();
+        } else {
+            // No se encontró el recurso -> 404 Not Found
+            return ResponseEntity.notFound().build();
+        }
     }
-}
+}//CIERRE PRODUCTOS REST CONTROLLER
