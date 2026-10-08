@@ -1,6 +1,9 @@
 package es.decroly.tienda_decroly.controllers;
 
 import es.decroly.tienda_decroly.domain.Producto;
+import es.decroly.tienda_decroly.exceptions.BadRequestException;
+import es.decroly.tienda_decroly.exceptions.NotFoundException;
+import org.apache.catalina.webresources.JarResourceRoot;
 import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -9,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.net.URI;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.concurrent.atomic.AtomicLong;
 
 @RestController
@@ -35,18 +39,16 @@ public class ProductosRestController {
         return ResponseEntity.ok(productos);
     }
 
+
     @GetMapping("/{id}")
-    public Producto getProductoById(@PathVariable long id) {
-        for (Producto p : productos) {
-            if (p.getId() != null && p.getId().equals(id)) {
-                return p;
-            }
-        }
-        return null;
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public Producto buscarPorId(@PathVariable Long id) {
+        return findbyid(id);
     }
 
     @PostMapping
-    public ResponseEntity<Producto> crear(@RequestBody Producto producto) {
+    public ResponseEntity<Producto> create(@RequestBody Producto producto) {
+        validarProducto(producto);//llamo la funcion de las validaciones que hice abajo
         Long id = secuencia.incrementAndGet();
         Producto nuevoProducto = new Producto(id, producto.getNombre(), producto.getPrecio(), producto.getStock());
         productos.add(producto);
@@ -56,32 +58,51 @@ public class ProductosRestController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Producto> actualizar(@PathVariable long id, @RequestBody Producto producto) {
+    public Producto update(@PathVariable long id, @RequestBody Producto producto) {
+        validarProducto(producto);
         for (Producto p : productos) {
             if (p.getId() != null && p.getId().equals(id)) {
                 p.setNombre(producto.getNombre());
                 p.setPrecio(producto.getPrecio());
                 p.setStock(producto.getStock());
 
-                // Encontrado y actualizado -> 200 OK con el objeto modificado
-                return ResponseEntity.ok(p);
+                return p; //Spring devuelve 200 OK
             }
         }
-
-        // Terminó el bucle y no lo encontró -> 404 Not Found
-        return ResponseEntity.notFound().build();
+        throw new NotFoundException("No existe el producto con el id: " + id);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> eliminar(@PathVariable Long id) {
-        boolean eliminado = productos.removeIf(p -> p.getId() != null && p.getId().equals(id));
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void delete(@PathVariable Long id) {
+        boolean eliminado = productos.removeIf(p ->
+                p.getId() != null && p.getId().equals(id));
 
-        if (eliminado) {
-            // Se borró correctamente -> 204 No Content
-            return ResponseEntity.noContent().build();
-        } else {
-            // No se encontró el recurso -> 404 Not Found
-            return ResponseEntity.notFound().build();
+        if (!eliminado) {
+            throw new NotFoundException("No existe un producto con el id: " + id);
+        }
+    }
+
+    private Producto findbyid(long id) {
+        for (Producto p : productos) {
+            if (p.getId().equals(id)) {
+                return p;
+            }
+        }
+        throw new NotFoundException("No existe el producto con el id: " + id);
+    }
+
+    private void validarProducto(Producto producto) {
+
+        if (producto == null || producto.getNombre() == null || producto.getNombre().isBlank()) {
+            throw new BadRequestException("El producto o su nombre no pueden estar vacíos");
+        }
+
+        if (producto.getPrecio() <= 0) {
+            throw new BadRequestException("El precio debe ser mayor que cero");
+        }
+        if (producto.getStock() <= 0) {
+            throw new BadRequestException("El stock debe ser mayor que cero");
         }
     }
 }//CIERRE PRODUCTOS REST CONTROLLER
